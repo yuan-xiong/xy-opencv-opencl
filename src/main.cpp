@@ -45,7 +45,8 @@ void test_loop() {
 void test_threads() {
 	std::cout << "[enter] " << __func__ << std::endl;
 	// get cpu cores
-	nThreads = std::thread::hardware_concurrency();
+	//nThreads = std::thread::hardware_concurrency();
+	nThreads = 7;
 	std::vector<int> threadIds(nThreads);
 	std::vector<std::thread> threads(nThreads);
 
