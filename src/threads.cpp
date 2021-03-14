@@ -10,7 +10,7 @@ void threadCallback(int *threadId) {
 			//std::this_thread::sleep_for(std::chrono::milliseconds(30));
 
 			//std::cout << threadId << std::endl;
-			std::cout << __func__ << "[" << *threadId << "] count:\t" << count++ << std::endl;
+			//std::cout << __func__ << "[" << *threadId << "] count:\t" << count++ << std::endl;
 		}
 	}
 }
