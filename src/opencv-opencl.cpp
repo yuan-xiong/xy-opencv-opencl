@@ -33,6 +33,21 @@ void helloWorld() {
 }
 
 void testOpenCLKernel() {
+	if(!cv::ocl::haveOpenCL()) {
+		std::cout << "OpenCL is not available, leaving..." << std::endl;
+		return;
+	}
+
+	cv::ocl::Context context = cv::ocl::Context::getDefault();
+	cv::ocl::Device device = context.device(0);
+
+	std::cout << "*************************************************" << std::endl;
+	for(int i=0; i<1; ++i) {
+		std::cout << "Name\t" << device.name() << std::endl;
+		std::cout << "OpenCL\t" << device.OpenCL_C_Version() << std::endl;
+		std::cout << std::endl;
+	}
+
 	helloWorld();
 }
 
