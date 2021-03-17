@@ -24,7 +24,7 @@ void helloWorld() {
 
 	bool sync = true;
 	size_t globalSize[] = {32, 32};
-	size_t localSize[]  = {16, 16};
+	size_t localSize[]  = {8, 8};
 	bool success = kernel.run(2, globalSize, localSize, sync);
 	if(success) {
 		std::cout << "Succeeded to run OpenCL kernel: " << __func__ << std::endl;
