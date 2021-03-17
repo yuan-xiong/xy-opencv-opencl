@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "threads.hpp"
+#include "opencv-opencl.hpp"
 
 int nThreads = 1;
 
@@ -45,8 +46,8 @@ void test_loop() {
 void test_threads() {
 	std::cout << "[enter] " << __func__ << std::endl;
 	// get cpu cores
-	//nThreads = std::thread::hardware_concurrency();
-	nThreads = 7;
+	nThreads = std::thread::hardware_concurrency();
+	//nThreads = 7;
 	std::vector<int> threadIds(nThreads);
 	std::vector<std::thread> threads(nThreads);
 
@@ -60,10 +61,16 @@ void test_threads() {
 	}
 }
 
+void test_opencl() {
+	std::cout << "[enter] " << __func__ << std::endl;
+	testOpenCLKernel();
+}
+
 int main(int argc, char **argv) {
 	std::cout << "[enter] " << __func__ << std::endl;
 
 	//test_loop();
-	test_threads();
+	//test_threads();
+	test_opencl();
 	return 0;
 }
