@@ -1,4 +1,6 @@
-#include "../second.cl"
+//#include "../second.cl"
+//#include "/home/xy18/yuan/test/opencl/opencv-opencl/test-opencv-header-for-opencl/build-xy/second.cl"
+//#include "second.hpp"
 
 __kernel void hello_world(const int input) {
 	size_t gid0 = get_global_id(0);

@@ -8,22 +8,29 @@
 void test_hello_world() {
 	std::cout << "[enter] " << __func__ << std::endl;
 	
-	std::string file = "../hello_world.cl";
+	//std::string file = "../hello_world.cl";
+	std::string file = "/home/xy18/yuan/test/opencl/opencv-opencl/test-opencv-header-for-opencl/build-xy/hello_world.cl";
 	std::ifstream ifs(file);
 	if(ifs.fail()) {
 		std::cout << "Failed to load OpenCL file:\t" << file << std::endl;
 		return;
+	} else {
+		std::cout << "Succeed to load OpenCL file:\t" << file << std::endl;
 	}
 
 	std::string source((std::istreambuf_iterator<char>(ifs)), std::istreambuf_iterator<char>());
 	cv::ocl::ProgramSource programSource(source.c_str());
 
 	cv::ocl::Program program;
-	std::string buildOption = cv::format("-D TIMES=%d", 1000);
+	std::string buildOption = cv::format("-I. -D TIMES=%d", 1000);
 	std::string errmsg;
 	program.create(programSource, buildOption, errmsg);
 
+	std::cout << "Succeed to create program" << std::endl;
+	std::string kernelBuildOption = cv::format("-I.");
 	cv::ocl::Kernel kernel("hello_world" ,program);
+
+	std::cout << "Succeed to create kernel" << std::endl;
 	int input = 100;
 	kernel.set(0, input);
 
